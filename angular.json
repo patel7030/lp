@@ -1,114 +1,113 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "newProjectRoot": "projects",
-  "projects": {
-    "Osumar": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "standalone": false
-        },
-        "@schematics/angular:directive": {
-          "standalone": false
-        },
-        "@schematics/angular:pipe": {
-          "standalone": false
-        }
-      },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:application",
-          "options": {
-            "outputPath": "dist/osumar",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
-            "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
-            ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "Osumar": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "standalone": false
                 },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                "@schematics/angular:directive": {
+                    "standalone": false
+                },
+                "@schematics/angular:pipe": {
+                    "standalone": false
                 }
-              ],
-              "outputHashing": "all"
             },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:application",
+                    "options": {
+                        "outputPath": "dist/osumar",
+                        "index": "src/index.html",
+                        "browser": "src/main.ts",
+                        "polyfills": [
+                            "zone.js"
+                        ],
+                        "tsConfig": "tsconfig.app.json",
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets"
+                        ],
+                        "styles": [
+                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                            "src/styles.css"
+                        ],
+                        "scripts": [],
+                        "server": "src/main.server.ts",
+                        "prerender": true,
+                        "ssr": {
+                            "entry": "server.ts"
+                        }
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [{
+                                    "type": "initial",
+                                    "maximumWarning": "600kb",
+                                    "maximumError": "1.2mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "3kb",
+                                    "maximumError": "5kb"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "optimization": false,
+                            "extractLicenses": false,
+                            "sourceMap": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "configurations": {
+                        "production": {
+                            "buildTarget": "Osumar:build:production"
+                        },
+                        "development": {
+                            "buildTarget": "Osumar:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "buildTarget": "Osumar:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "polyfills": [
+                            "zone.js",
+                            "zone.js/testing"
+                        ],
+                        "tsConfig": "tsconfig.spec.json",
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets"
+                        ],
+                        "styles": [
+                            "src/styles.css"
+                        ],
+                        "scripts": []
+                    }
+                }
             }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "Osumar:build:production"
-            },
-            "development": {
-              "buildTarget": "Osumar:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "buildTarget": "Osumar:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
-          }
         }
-      }
+    },
+    "cli": {
+        "analytics": "07bd0a7c-ad9a-4a89-8cf5-c5c2085972f5"
     }
-  },
-  "cli": {
-    "analytics": "07bd0a7c-ad9a-4a89-8cf5-c5c2085972f5"
-  }
 }
